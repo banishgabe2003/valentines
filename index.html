@@ -77,16 +77,41 @@
         <button id="no" onclick="sayNo()">Heck No</button>
     </div>
 
+   
     <script>
-        function sayYes() {
-            document.getElementById("gif").src = "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif";
-            document.getElementById("question").innerText = "YAYAYY POOKIE ";
-            document.querySelector(".button-container").style.display = "none";
-        }
+        let rejectionLevel = 0;
 
         function sayNo() {
-            document.getElementById("gif").src = "https://media.giphy.com/media/3o6ZsXU2XcR3yUQQBa/giphy.gif";
-            document.getElementById("question").innerText = "What? Seriously? ";
+            const messages = [
+                "Dude. Seriously. Pick yes.",
+                "Wow. This is getting awkward...",
+                "Bruh. You have one more chance.",
+                "That's it. No more 'No' for you."
+            ];
+
+            const gifs = [
+                "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif", // Sad puppy
+                "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif", // Disappointed face
+                "https://media.giphy.com/media/J3CzqWLGwC2Eo/giphy.gif", // Facepalm
+                "https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif"  // Angry kitten
+            ];
+
+            if (rejectionLevel < messages.length) {
+                document.getElementById("question").innerText = messages[rejectionLevel];
+                document.getElementById("gif").src = gifs[rejectionLevel];
+                rejectionLevel++;
+            }
+
+            if (rejectionLevel === messages.length) {
+                document.getElementById("no").style.display = "none"; // Remove 'No' button
+            }
+        }
+
+        function sayYes() {
+            document.getElementById("question").innerText = "YAYAYY POOKIE 💖💖💖";
+            document.getElementById("gif").src = "https://media.giphy.com/media/l0ExvMqtnQd8WbVNe/giphy.gif"; // Happy GIF
+            document.getElementById("yes").style.display = "none";
+            document.getElementById("no").style.display = "none";
         }
     </script>
 
